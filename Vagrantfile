@@ -7,7 +7,7 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "Centos5.8_minimal"
+  config.vm.box = "centos5.8"
   config.vm.box_url = "http://tag1consulting.com/files/centos-5.8-x86-64-minimal.box"
 
   # Provider-specific configuration so you can fine-tune various
@@ -28,7 +28,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   
   config.vm.provision :chef_solo do |chef|
   	chef.run_list = ["recipe[apache2]"]
-    #chef.add_recipe("apache2")
+    #chef.json = {
+    #  "apache" => {
+    #    "listen_address" => "0.0.0.0"
+    #    "default_site_enabled" => true,
+    #    "docroot_dir" => "/var/www/html"
+    #  }
+    #}
   	#chef.json = {
   	#	"wordpress"=>{ 
   	#		"db"=>{ 
