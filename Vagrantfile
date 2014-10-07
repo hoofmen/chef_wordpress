@@ -19,6 +19,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   
   end
   
+  config.vm.network(:private_network, {:ip=>"33.33.33.10", :drop_nat_interface_default_route=>true})
+  config.vm.network(:public_network, {:drop_nat_interface_default_route=>true})
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
   config.omnibus.chef_version = :latest
